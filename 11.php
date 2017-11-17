@@ -1,18 +1,20 @@
+//Программа не работает с кирилицей
+
 <?php
 
-$text = 'b васька слушает да ест. b воз и ныне там. а вы друзья как ни садитесь, все в музыканты не годитесь. а король-то — голый. а ларчик просто открывался.а там хоть трава не расти.';
+$text = 'fdg. ewdf. dfsf';
 
 function transform($string)
 {
     $sentence= explode('. ', $string);
+    $result = '';
     foreach ($sentence as $value){
-    $value = ucfirst($value);
-    echo $value;
+    $result .= ucfirst($value) . ' ';
     }
-    echo '<pre>';
-    print_r($sentence);
-    echo '</pre>';
+    return $result;
 }
-transform($text);
+$result = transform($text);
+
+echo $result;
 
 

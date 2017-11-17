@@ -1,13 +1,16 @@
 <?php
 
 require_once __DIR__ . '/lib.php';
-$comments = getArrayValue($_POST, 'comments');
 
-if (empty($comments)) die ('Required parameters are not exist');
+$file = getArrayValue($_GET, 'file');
+$dir = __DIR__ . '/DATA';
+//getUniqueFileName($dir, 'txt');
+$content = serialize($_POST);
 
-$dir = __DIR__ . '/data/comments.txt';
-$comment[] = $comments;
-
-saveComments($dir, $comment);
-header("Location: /functions_forms_tasks/8/");
+if (empty($content)) {
+    die ('Required parameters are not exist');
+}
+$file = saveToFile($content, $dir, $file);
+header("Location: /functions_forms_tasks/7/");
 exit;
+?>
